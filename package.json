@@ -1,0 +1,21 @@
+{
+  "name": "reco-advertising-website",
+  "version": "1.0.0",
+  "description": "Reco Advertising - Premium Advertising Solutions",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "body-parser": "^2.3.0",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "ejs": "^3.1.9",
+    "express": "^4.22.2",
+    "googleapis": "^173.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
