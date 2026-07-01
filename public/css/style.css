@@ -201,6 +201,22 @@ img {
     box-shadow: 0 5px 20px rgba(233,69,96,0.3);
 }
 
+/* 🟢 BROCHURE BUTTON */
+.btn-brochure {
+    background: linear-gradient(135deg, #e94560, #c73e54) !important;
+    border: none !important;
+    margin-right: 8px;
+}
+
+.btn-brochure i {
+    margin-right: 6px;
+}
+
+.btn-brochure:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(233, 69, 96, 0.4);
+}
+
 .hamburger {
     display: none;
     flex-direction: column;
@@ -1500,7 +1516,7 @@ img {
 }
 
 /* ========================================
-   WHATSAPP FLOATING BUTTON
+   RESPONSIVE WHATSAPP FLOATING BUTTON
 ======================================== */
 .whatsapp-float {
     position: fixed;
@@ -1515,14 +1531,97 @@ img {
     align-items: center;
     justify-content: center;
     font-size: 32px;
-    box-shadow: 0 4px 20px rgba(37,211,102,0.3);
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.35);
     z-index: 999;
-    transition: var(--transition);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    animation: pulse-whatsapp 2s infinite;
 }
 
 .whatsapp-float:hover {
-    transform: scale(1.1);
-    box-shadow: 0 6px 30px rgba(37,211,102,0.4);
+    transform: scale(1.12);
+    box-shadow: 0 8px 30px rgba(37, 211, 102, 0.5);
+}
+
+/* WhatsApp Tooltip */
+.whatsapp-tooltip {
+    position: absolute;
+    right: 70px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.whatsapp-float:hover .whatsapp-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-5px);
+}
+
+/* Pulse Animation */
+@keyframes pulse-whatsapp {
+    0% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+    }
+}
+
+/* ========================================
+   RESPONSIVE WHATSAPP - MOBILE
+======================================== */
+@media (max-width: 768px) {
+    .whatsapp-float {
+        width: 55px;
+        height: 55px;
+        font-size: 28px;
+        bottom: 20px;
+        right: 20px;
+        box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+    }
+    
+    .whatsapp-tooltip {
+        display: none;
+    }
+    
+    .whatsapp-float:hover {
+        transform: scale(1.05);
+    }
+}
+
+@media (max-width: 480px) {
+    .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+        bottom: 15px;
+        right: 15px;
+        box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+    }
+}
+
+/* WhatsApp Button - Animation on Scroll */
+.whatsapp-float.hidden {
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+}
+
+.whatsapp-float.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* ========================================
@@ -1654,8 +1753,30 @@ img {
         display: none;
     }
 
+    /* ===== NAV CTA - MOBILE ===== */
     .nav-cta {
-        display: none;
+        display: flex;
+        gap: 6px;
+        align-items: center;
+    }
+
+    .btn-brochure {
+        padding: 6px 12px;
+        font-size: 11px;
+    }
+
+    .btn-brochure i {
+        font-size: 11px;
+        margin-right: 4px;
+    }
+
+    .nav-cta .btn-cta {
+        padding: 6px 12px;
+        font-size: 11px;
+    }
+
+    .nav-cta .btn-cta i {
+        font-size: 11px;
     }
 
     /* ===== HEADER - SINGLE LINE ===== */
@@ -1954,6 +2075,21 @@ img {
 
     .logo-img {
         height: 30px;
+    }
+
+    /* ===== EXTRA SMALL - NAV CTA ===== */
+    .btn-brochure {
+        padding: 4px 10px;
+        font-size: 10px;
+    }
+
+    .btn-brochure i {
+        font-size: 10px;
+    }
+
+    .nav-cta .btn-cta {
+        padding: 4px 10px;
+        font-size: 10px;
     }
 
     /* ===== EXTRA SMALL - HERO ===== */

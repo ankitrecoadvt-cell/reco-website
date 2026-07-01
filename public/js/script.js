@@ -900,6 +900,23 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // ========================================
+    // BROCHURE DOWNLOAD TRACKING
+    // ========================================
+    const brochureBtn = document.querySelector('.btn-brochure');
+    if (brochureBtn) {
+        brochureBtn.addEventListener('click', function() {
+            console.log('📄 Brochure download started');
+            // Optional: Google Analytics event track karo
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'download', {
+                    'event_category': 'brochure',
+                    'event_label': 'PDF Brochure'
+                });
+            }
+        });
+    }
+
+    // ========================================
     // INITIALIZE EVERYTHING
     // ========================================
     console.log('🚀 Reco Advertising Website Loading...');

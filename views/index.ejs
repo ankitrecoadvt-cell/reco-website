@@ -75,6 +75,10 @@
                     </ul>
 
                     <div class="nav-cta">
+                        <!-- 🟢 NEW: Download Brochure Button -->
+                        <a href="/api/download-brochure" class="btn-cta btn-brochure">
+                            <i class="fas fa-file-pdf"></i> Brochure
+                        </a>
                         <a href="https://wa.me/919717413445?text=Hi%20Reco%20Advertising%2C%0A%0AI%20just%20visited%20your%20website%20and%20I'm%20looking%20for%20branding%2C%20printing%2C%20or%20promotional%20solutions%20for%20my%20business.%0A%0APlease%20arrange%20a%20callback.%20I'd%20like%20to%20discuss%20my%20requirement.%0A%0AThank%20you%21"
                             target="_blank" class="btn-cta">
                             <i class="fab fa-whatsapp"></i> Enquire Now
@@ -386,7 +390,7 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <div class="footer-logo">
-                        <!-- <img src="/images/reco_advertising_logo.png" alt="Reco Advertising"> -->
+                        <img src="/images/reco_advertising_logo.png" alt="Reco Advertising">
                         <span>Reco <span class="highlight">Advertising</span></span>
                     </div>
                     <p>Premium advertising solutions for businesses of all sizes. We deliver quality, innovation, and
@@ -442,10 +446,13 @@
         </div>
     </footer>
 
-    <!-- WhatsApp Floating Button -->
+    <!-- ======================================== -->
+    <!-- RESPONSIVE WHATSAPP FLOATING BUTTON -->
+    <!-- ======================================== -->
     <a href="https://wa.me/919717413445?text=Hi%20Reco%20Advertising%2C%0A%0AI%20just%20visited%20your%20website%20and%20I'm%20looking%20for%20branding%2C%20printing%2C%20or%20promotional%20solutions%20for%20my%20business.%0A%0APlease%20arrange%20a%20callback.%20I'd%20like%20to%20discuss%20my%20requirement.%0A%0AThank%20you%21"
-        target="_blank" class="whatsapp-float">
+        target="_blank" class="whatsapp-float" id="whatsappFloat" aria-label="Chat on WhatsApp">
         <i class="fab fa-whatsapp"></i>
+        <span class="whatsapp-tooltip">Chat with us!</span>
     </a>
 
     <script src="/js/script.js"></script>
