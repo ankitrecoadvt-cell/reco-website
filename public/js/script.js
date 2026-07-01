@@ -775,6 +775,131 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // ========================================
+    // VIEW MORE BUTTONS - SCROLL TRIGGER
+    // ========================================
+
+    // 🟢 View More Products
+    const viewMoreProducts = document.getElementById('viewMoreProducts');
+    if (viewMoreProducts) {
+        viewMoreProducts.addEventListener('click', function() {
+            const grid = document.getElementById('productGrid');
+            // Show all 17 products
+            grid.innerHTML = products.map(function(product) {
+                return `
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="${product.image}" alt="${product.name}" loading="lazy" onerror="this.style.display='none'">
+                            <div class="product-badge">${product.category}</div>
+                            <div class="product-overlay">
+                                <a href="#contact" class="quick-view">Inquire Now</a>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">${product.subcategory}</div>
+                            <h3>${product.name}</h3>
+                            <p><strong>Code:</strong> ${product.code}</p>
+                            <p><strong>MOQ:</strong> ${product.moq} | <strong>Timeline:</strong> ${product.timeline} hrs</p>
+                            <div class="product-footer">
+                                <span class="product-price">${product.price}</span>
+                                <a href="#contact" class="btn-inquire">
+                                    <i class="fas fa-arrow-right"></i> Inquire
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            
+            this.style.display = 'none';
+            console.log('✅ All products shown');
+        });
+    }
+
+    // 🟢 View More Clients
+    const viewMoreClients = document.getElementById('viewMoreClients');
+    if (viewMoreClients) {
+        viewMoreClients.addEventListener('click', function() {
+            const grid = document.getElementById('clientGrid');
+            grid.innerHTML = clients.map(function(client) {
+                return `
+                    <div class="client-card">
+                        <div class="client-logo">
+                            <img src="${client.logo}" alt="${client.name}" loading="lazy" onerror="this.style.display='none'">
+                            <div class="client-overlay">
+                                <i class="fas fa-plus-circle"></i>
+                            </div>
+                        </div>
+                        <h4>${client.name}</h4>
+                    </div>
+                `;
+            }).join('');
+            
+            this.style.display = 'none';
+            console.log('✅ All clients shown');
+        });
+    }
+
+    // 🟢 View More Works
+    const viewMoreWorks = document.getElementById('viewMoreWorks');
+    if (viewMoreWorks) {
+        viewMoreWorks.addEventListener('click', function() {
+            const grid = document.getElementById('worksGrid');
+            grid.innerHTML = recentWorks.map(function(image) {
+                return `
+                    <div class="work-item">
+                        <img src="${image}" alt="Recent Work" loading="lazy" onerror="this.style.display='none'">
+                        <div class="work-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            
+            this.style.display = 'none';
+            console.log('✅ All works shown');
+        });
+    }
+
+    // ========================================
+    // SCROLL TRIGGER - SHOW VIEW MORE BUTTONS
+    // ========================================
+
+    function initViewMoreTriggers() {
+        const sections = [
+            { id: 'products', btnId: 'viewMoreProducts' },
+            { id: 'clients', btnId: 'viewMoreClients' },
+            { id: 'recent-works', btnId: 'viewMoreWorks' }
+        ];
+        
+        sections.forEach(function(section) {
+            const el = document.getElementById(section.id);
+            const btn = document.getElementById(section.btnId);
+            
+            if (!el || !btn) return;
+            
+            // Initially hide button
+            btn.style.display = 'none';
+            btn.style.opacity = '0';
+            btn.style.transform = 'translateY(20px)';
+            
+            // Show button when user scrolls to section
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        btn.style.display = 'inline-flex';
+                        // Trigger animation after a small delay
+                        setTimeout(function() {
+                            btn.classList.add('visible');
+                        }, 300);
+                    }
+                });
+            }, { threshold: 0.2 });
+            
+            observer.observe(el);
+        });
+    }
+
+    // ========================================
     // INITIALIZE EVERYTHING
     // ========================================
     console.log('🚀 Reco Advertising Website Loading...');
@@ -788,6 +913,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initActiveNav();
     initScrollTop();
     initScrollAnimations();
+    initViewMoreTriggers();
     
     console.log('✅ Website fully loaded!');
 
